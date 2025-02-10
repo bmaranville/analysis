@@ -17,7 +17,7 @@ jobs:
       max-parallel: 3
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
     - name: setup apt dependencies
       run: |
@@ -29,7 +29,7 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install cython pytest build wheel setuptools
-        python3 -m pip install numpy matplotlib auditwheel
+        python3 -m pip install numpy==1.26.4 matplotlib auditwheel
 
     - name: Install BornAgain
       run: |
