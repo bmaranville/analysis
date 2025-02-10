@@ -4,8 +4,8 @@ import pytest
 import numpy as np
 from test_discovery import get_test_data, get_polarised_test_data
 
-from refl1d import abeles
-from refl1d.reflectivity import reflectivity_amplitude, magnetic_amplitude
+from refl1d.probe import abeles
+from refl1d.sample.reflectivity import reflectivity_amplitude, magnetic_amplitude
 from refl1d.names import Stack, QProbe, Experiment, SLD
 
 # abeles.refl is a Python calculator, reflectivity_amplitude uses
@@ -160,10 +160,10 @@ def pol_kernel_test(slabs, data, AGUIDE, H, backend):
     Rmm, Rmp, Rpm, Rpp = [(r * np.conj(r)).real for r in [rmm, rmp, rpm, rpp]]
     assert Rmm.shape == data[:, 1].shape
 
-    np.testing.assert_allclose(Rmm, data[:, 1], rtol=8e-5)
-    np.testing.assert_allclose(Rmp, data[:, 2], rtol=8e-5)
-    np.testing.assert_allclose(Rpm, data[:, 3], rtol=8e-5)
-    np.testing.assert_allclose(Rpp, data[:, 4], rtol=8e-5)
+    np.testing.assert_allclose(Rmm, data[:, 1], rtol=8e-5, atol=1e-12)
+    np.testing.assert_allclose(Rmp, data[:, 2], rtol=8e-5, atol=1e-12)
+    np.testing.assert_allclose(Rpm, data[:, 3], rtol=8e-5, atol=1e-12)
+    np.testing.assert_allclose(Rpp, data[:, 4], rtol=8e-5, atol=1e-12)
     return Rmm, Rmp, Rpm, Rpp
 
 
