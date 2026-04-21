@@ -9,7 +9,7 @@ import subprocess
 
 import pytest
 import numpy as np
-from test_discovery import get_test_data
+from .test_discovery import get_test_data
 
 tests = list(get_test_data())
 ids = [f"{t[0]}" for t in tests]
